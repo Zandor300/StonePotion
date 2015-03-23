@@ -1,0 +1,5 @@
+name: StonePotion
+main: com.zandor300.stonepotion.StonePotion
+version: 1.0.0
+author: Zandor300
+depend: [ZSUtilities]
