@@ -34,6 +34,6 @@ public class PlayerListener extends StonePotionListener {
 		player.addPotionEffect(new PotionEffect(StonePotion.getTypes().get(rand), time * 20, 1));
 		player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
 		StonePotion.getChat().sendMessage(player, "You have been rewarded with " +
-				StonePotion.getTypes().get(rand).getName() + " for " + time + " seconds.");
+				StonePotion.getTypes().get(rand).getName().toLowerCase().replaceAll("_", " ") + " for " + time + " seconds.");
 	}
 }
