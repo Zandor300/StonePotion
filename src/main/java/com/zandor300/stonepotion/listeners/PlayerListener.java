@@ -2,6 +2,7 @@ package com.zandor300.stonepotion.listeners;
 
 import com.zandor300.stonepotion.StonePotion;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
@@ -28,17 +29,11 @@ public class PlayerListener extends StonePotionListener {
 			return;
 		Player player = event.getPlayer();
 		Random random = new Random();
-		int rand = random.nextInt(3);
+		int rand = random.nextInt(StonePotion.getTypes().size());
 		int time = 60 + random.nextInt(60);
-		if(rand == 0) {
-			player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, time * 20, 1));
-			StonePotion.getChat().sendMessage(player, "You have been rewarded with SPEED for " + time + " seconds.");
-		} else if(rand == 1) {
-			player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, time * 20, 1));
-			StonePotion.getChat().sendMessage(player, "You have been rewarded with NIGHT VISION for " + time + " seconds.");
-		} else if(rand == 2) {
-			player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, time * 20, 1));
-			StonePotion.getChat().sendMessage(player, "You have been rewarded with FIRE RESISTANCE for " + time + " seconds.");
-		}
+		player.addPotionEffect(new PotionEffect(StonePotion.getTypes().get(rand), time * 20, 1));
+		player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+		StonePotion.getChat().sendMessage(player, "You have been rewarded with " +
+				StonePotion.getTypes().get(rand).getName() + " for " + time + " seconds.");
 	}
 }
