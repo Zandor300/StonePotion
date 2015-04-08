@@ -2,6 +2,7 @@ package com.zandor300.stonepotion;
 
 import com.zandor300.stonepotion.commands.StonePotionCommand;
 import com.zandor300.stonepotion.listeners.PlayerListener;
+import com.zandor300.zsutilities.ZSUtilities;
 import com.zandor300.zsutilities.commandsystem.CommandManager;
 import com.zandor300.zsutilities.config.Config;
 import com.zandor300.zsutilities.utilities.Chat;
@@ -45,6 +46,8 @@ public class StonePotion extends JavaPlugin {
 		config = new Config(this, "config.yml", true);
 		plugin = this;
 		PluginManager pm = Bukkit.getPluginManager();
+
+		ZSUtilities.addDependency(this);
 
 		chat.sendConsoleMessage("Starting metrics...");
 		try {
